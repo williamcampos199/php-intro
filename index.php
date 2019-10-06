@@ -1,3 +1,8 @@
+<?php
+
+session_start(); //Sempre no inicio do código
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +19,18 @@
 <p>FORMULÁRIO PARA INSCRIÇÃO DE COMPETIDORES </p>
 
  <form action="script.php" method="post" autocomplete="off">  <!-- //method só aceita Post e Get/ outros metodos Ajax  -->
+    <?php
+
+        $mensagemDeSucesso = isset($_SESSION['mensagem-de-sucesso']) ? $_SESSION['mensagem-de-sucesso'] : '';
+        if(!empty($mensagemDeSucesso)){
+            echo $mensagemDeSucesso;
+        }
+    
+        $mensagemDeErro = isset($_SESSION['mensagem-de-erro']) ? $_SESSION['mensagem-de-erro'] : '' ;
+         if(!empty($mensagemDeErro)){
+            echo $mensagemDeErro;
+         }
+    ?>
     <p>Seu nome:<Input type="text" name="nome"  /></p>
     <p>Sua idade:<Input type="text" name="idade"  /></p>
     <p> <input type="submit"  value="Enviar dados do competidor"/></p>
